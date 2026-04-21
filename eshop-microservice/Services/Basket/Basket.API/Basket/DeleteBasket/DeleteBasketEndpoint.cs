@@ -15,6 +15,5 @@ namespace Basket.API.Basket.DeleteBasket
                 return Results.Ok(response);
             }).WithName("DeleteBasket").WithTags("Baskets");
         }
-    {
     }
 }

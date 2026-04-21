@@ -27,6 +27,7 @@ builder.Services.AddMarten(options =>
 })
 .UseLightweightSessions();
 
+
 var app = builder.Build();
 app.UseExceptionHandler();
 app.MapCarter();
