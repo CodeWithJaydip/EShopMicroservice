@@ -31,6 +31,11 @@ builder.Services.AddStackExchangeRedisCache(options =>
 builder.Services.AddHealthChecks()
     .AddNpgSql(builder.Configuration.GetConnectionString("Database")!, name: "PostgreSQL")
     .AddRedis(builder.Configuration.GetConnectionString("Redis")!, name: "Redis");
+
+builder.Services.AddGrpcClient<Discount.gRPC.Discount.DiscountClient>(options =>
+{
+    options.Address = new Uri(builder.Configuration["GrpcSettings:DiscountUrl"]!);
+});
 var app = builder.Build();
 
 app.MapGet("/", () => "Hello World!");
